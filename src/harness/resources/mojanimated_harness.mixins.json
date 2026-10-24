@@ -1,0 +1,8 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "dev.chill.mojanimated.harness.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": ["WindowMixin", "LoadingOverlayCaptureMixin"],
+  "injectors": { "defaultRequire": 1 }
+}

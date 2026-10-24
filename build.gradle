@@ -1,0 +1,85 @@
+plugins {
+    id 'java-library'
+    id 'net.neoforged.moddev' version '2.0.140'
+}
+
+version = mod_version
+group = mod_group_id
+
+base {
+    archivesName = "${mod_id}-${minecraft_version}"
+}
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+
+neoForge {
+    version = project.neo_version
+
+    runs {
+        client {
+            client()
+            gameDirectory = project.file('run')
+            programArguments.addAll '--width', '1280', '--height', '720'
+        }
+    }
+
+    // Full-pack smoke test: copies of the Foundation mods/config in run-full, muted, minimized by the harness.
+    runs {
+        fullPack {
+            client()
+            gameDirectory = project.file('run-full')
+            programArguments.addAll '--width', '1280', '--height', '720'
+            jvmArguments.addAll '-Xmx8G', '-Xms2G'
+        }
+    }
+
+    mods {
+        "${mod_id}" {
+            sourceSet(sourceSets.main)
+        }
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+var replaceProperties = [
+        minecraft_version: minecraft_version,
+        neo_version      : neo_version,
+        mod_id           : mod_id,
+        mod_name         : mod_name,
+        mod_license      : mod_license,
+        mod_version      : mod_version,
+]
+tasks.named('processResources', ProcessResources) {
+    inputs.properties replaceProperties
+    filesMatching(['META-INF/neoforge.mods.toml']) {
+        expand replaceProperties
+    }
+}
+
+// ---- Test-only harness: never packaged into the release jar ----
+sourceSets {
+    harness
+}
+neoForge {
+    addModdingDependenciesTo(sourceSets.harness)
+    mods {
+        mojanimated_harness {
+            sourceSet(sourceSets.harness)
+        }
+    }
+}
+
+tasks.named('jar', Jar) {
+    from(rootProject.file('LICENSE')) { rename { 'LICENSE_mojanimated' } }
+    from(rootProject.file('CREDITS.md')) { rename { 'CREDITS_mojanimated.md' } }
+}
+
+// Test helper packaged on its own for production smoke tests (never published).
+tasks.register('harnessJar', Jar) {
+    archiveBaseName = 'mojanimated-test-harness'
+    from(sourceSets.harness.output)
+    destinationDirectory = layout.buildDirectory.dir('harness')
+}

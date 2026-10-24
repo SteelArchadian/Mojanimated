@@ -1,0 +1,16 @@
+{
+  "subtitles.mojanimated.startup": "Mojang Studios jingle plays",
+
+  "mojanimated.configuration.title": "Mojanimated",
+  "mojanimated.configuration.section.mojanimated.client.toml": "Loading Screen",
+  "mojanimated.configuration.section.mojanimated.client.toml.title": "Mojanimated: Loading Screen",
+
+  "mojanimated.configuration.startupAnimation": "Startup Intro",
+  "mojanimated.configuration.startupAnimation.tooltip": "Play the animated Mojang Studios logo when the game starts.",
+  "mojanimated.configuration.startupSound": "Startup Jingle",
+  "mojanimated.configuration.startupSound.tooltip": "Play the Mojang Studios jingle with the startup intro.",
+  "mojanimated.configuration.reloadAnimation": "Reload Animation",
+  "mojanimated.configuration.reloadAnimation.tooltip": "Silently loop the logo while resource packs reload (F3+T or the pack screen).",
+  "mojanimated.configuration.holdSeconds": "Logo Hold Time",
+  "mojanimated.configuration.holdSeconds.tooltip": "Seconds to hold the finished logo and \"Studios\" before the title screen."
+}

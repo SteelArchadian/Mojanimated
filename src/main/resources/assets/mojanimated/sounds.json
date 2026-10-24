@@ -1,0 +1,8 @@
+{
+  "startup": {
+    "subtitle": "subtitles.mojanimated.startup",
+    "sounds": [
+      "mojanimated:startup"
+    ]
+  }
+}

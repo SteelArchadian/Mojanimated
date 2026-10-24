@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "dev.chill.mojanimated.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "LoadingOverlayMixin",
+    "MusicManagerMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

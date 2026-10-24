@@ -1,0 +1,42 @@
+modLoader = "javafml"
+loaderVersion = "[4,)"
+license = "${mod_license}"
+
+[[mods]]
+modId = "${mod_id}"
+version = "${mod_version}"
+displayName = "${mod_name}"
+logoFile = "assets/mojanimated/icon.png"
+authors = "Chill"
+credits = "Animation frames, jingle and timing from Animated Mojang Logo by BouncingElf10 (GPL-3.0-or-later). Mojang Studios logo and jingle (c) Mojang Studios / Microsoft. Unofficial fan mod."
+description = '''
+Plays the animated Mojang Studios logo on the vanilla loading screen.
+Startup plays the full intro with the jingle; resource pack reloads loop the letters silently until loading finishes.
+Hooks the vanilla loading screen without replacing its logic, so FancyMenu and other menu mods keep working, and it works with earlyWindowControl off.
+Frames, jingle and timing from Animated Mojang Logo by BouncingElf10 (GPL-3.0-or-later). The Mojang Studios logo and jingle belong to Mojang Studios / Microsoft. Unofficial fan mod.
+'''
+
+[[dependencies.${mod_id}]]
+modId = "neoforge"
+type = "required"
+versionRange = "[21.1,)"
+ordering = "NONE"
+side = "CLIENT"
+
+[[dependencies.${mod_id}]]
+modId = "minecraft"
+type = "required"
+versionRange = "[1.21.1]"
+ordering = "NONE"
+side = "CLIENT"
+
+[[dependencies.${mod_id}]]
+modId = "animatedmojanglogo"
+type = "incompatible"
+reason = "This is a replacement for Animated Mojang Logo. Remove one of the two."
+versionRange = "[0,)"
+ordering = "NONE"
+side = "CLIENT"
+
+[[mixins]]
+config = "mojanimated.mixins.json"

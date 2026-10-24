@@ -1,0 +1,11 @@
+modLoader = "javafml"
+loaderVersion = "[4,)"
+license = "GPL-3.0-or-later"
+
+[[mods]]
+modId = "mojanimated_harness"
+version = "0.0.0"
+displayName = "Mojanimated test harness"
+
+[[mixins]]
+config = "mojanimated_harness.mixins.json"
